@@ -1,186 +1,255 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIVOTE: Acelerando el Crecimiento en el Ecosistema Minero del Norte</title>
-    <meta name="description" content="Su aliado estratégico para la expansión comercial, el levantamiento de capital y la penetración de mercado. Transformamos el potencial de PYMES y proveedores a la Gran Minería.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pivote: {
-                            dark: '#1e293b',   /* Gris azulado oscuro - Seriedad */
-                            primary: '#2563eb', /* Azul corporativo */
-                            accent: '#f97316',  /* Naranja - Energía/Renacer */
-                        }
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIVOTE: Acelerando el Crecimiento en el Ecosistema Minero del Norte</title>
+  <meta name="description" content="Su aliado estratégico para la expansión comercial, el levantamiento de capital y la penetración de mercado. Transformamos el potencial de PYMES y proveedores hacia la Gran Minería." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pivote: {
+              dark: '#1e293b',    /* Gris azulado oscuro */
+              primary: '#2563eb', /* Azul corporativo */
+              accent: '#f97316',  /* Naranja */
             }
+          }
         }
-    </script>
-    <style>
-        html { scroll-behavior: smooth; }
-        .hero-bg {
-            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-bg {
+      background:
+        linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.82)),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
+
 <body class="font-sans text-gray-700 bg-gray-50 pt-16">
-    <nav class="bg-white shadow-md fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-pivote-primary"><i class="fas fa-layer-group"></i> PIVOTE</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="text-gray-600 hover:text-pivote-primary font-medium">Inicio</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-pivote-primary font-medium">Ejes Estratégicos</a>
-                    <a href="#contacto" class="text-gray-600 hover:text-pivote-primary font-medium">Contacto</a>
-                    <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md font-medium transition">Agendar Consulta</a>
-                </div>
-            </div>
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-md fixed w-full z-50" aria-label="Navegación principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex-shrink-0 flex items-center">
+          <span class="text-2xl font-bold text-pivote-primary">
+            <i class="fas fa-layer-group" aria-hidden="true"></i> PIVOTE
+          </span>
         </div>
-    </nav>
-
-    <section id="inicio" class="hero-bg h-screen flex items-center justify-center text-center px-4 mb-20">
-        <div class="max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                PIVOTE: Acelerando el Crecimiento en el <span class="text-pivote-accent">Ecosistema Minero del Norte</span> [cite: 1, 2]
-            </h1>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Su aliado estratégico para la expansión comercial, el levantamiento de capital y la penetración de mercado. [cite: 3] Transformamos el potencial en resultados sustentables.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#contacto" class="bg-pivote-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg">
-                    Comenzar Diagnóstico
-                </a>
-                <a href="#servicios" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-pivote-dark transition">
-                    Conocer Ejes Estratégicos
-                </a>
-            </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary font-medium">Inicio</a>
+          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary font-medium">Ejes Estratégicos</a>
+          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary font-medium">Contacto</a>
+          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md font-medium transition">
+            Agendar Consulta
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </nav>
 
-    <section id="servicios" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestros Tres Ejes Estratégicos para el Crecimiento Sostenible [cite: 15, 16]</h2>
-                <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
-                <p class="mt-4 text-lg text-gray-600">Hemos diseñado un portfolio de intervención estructurado para abordar sus desafíos de ventas, capital y penetración de mercado con precisión. [cite: 19]</p>
-            </div>
+  <!-- HERO -->
+  <section id="inicio" class="hero-bg h-screen flex items-center justify-center text-center px-4 mb-20">
+    <div class="max-w-4xl">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+        PIVOTE: Acelerando el Crecimiento en el
+        <span class="text-pivote-accent">Ecosistema Minero del Norte</span>
+      </h1>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
-                    <div class="w-14 h-14 bg-blue-100 text-pivote-primary rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">1. Consulting: Estrategia y Transformación Interna [cite: 20, 21]</h3>
-                    <p class="text-gray-600">Asesoría específica para diseñar la hoja de ruta de crecimiento. Diseñamos planes de aumento de ventas y gestionamos los cambios organizacionales. [cite: 22, 23]</p>
-                    <ul class="text-sm text-gray-500 mt-4 space-y-1">
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Ideal para empresas que necesitan precisión en la estrategia. [cite: 24]</li>
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Obtenga una visión experta y un plan ejecutable. [cite: 25]</li>
-                    </ul>
-                </div>
+      <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+        Su aliado estratégico para la expansión comercial, el levantamiento de capital y la penetración de mercado.
+        Transformamos el potencial en resultados sustentables.
+      </p>
 
-                <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
-                    <div class="w-14 h-14 bg-orange-100 text-pivote-accent rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">2. Partnership: Capital, Ejecución y Alianza Societaria [cite: 26, 27]</h3>
-                    <p class="text-gray-600">Incorporación societaria para compartir riesgos y acelerar la expansión. Inyectamos capital y ponemos a disposición nuestro equipo de gestión comercial. [cite: 28]</p>
-                    <ul class="text-sm text-gray-500 mt-4 space-y-1">
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Ideal para expansión ambiciosa que requiere compromiso de largo plazo. [cite: 29]</li>
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Acceda a recursos financieros y ejecución comercial probada. [cite: 30]</li>
-                    </ul>
-                </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contacto" class="bg-pivote-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg">
+          Comenzar Diagnóstico
+        </a>
+        <a href="#servicios" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-pivote-dark transition">
+          Conocer Ejes Estratégicos
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
-                    <div class="w-14 h-14 bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">3. Agency: Representación Exclusiva y Penetración de Mercado [cite: 31, 32]</h3>
-                    <p class="text-gray-600">Autorización para ser su brazo comercial en la zona norte o a nivel país. Utilizamos nuestra robusta red de contactos y conocimiento local. [cite: 33, 34]</p>
-                    <ul class="text-sm text-gray-500 mt-4 space-y-1">
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Ideal para penetración rápida sin incurrir en costos de estructura propia. [cite: 35]</li>
-                        <li><i class="fas fa-check-circle text-pivote-accent mr-2"></i> Logre ventas y posicionamiento inmediato en el mercado minero chileno. [cite: 36]</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- SERVICIOS / EJES -->
+  <section id="servicios" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Nuestros Tres Ejes Estratégicos para el Crecimiento Sostenible
+        </h2>
+        <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+        <p class="mt-4 text-lg text-gray-600">
+          Un portafolio de intervención estructurado para abordar ventas, capital y penetración de mercado con precisión.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
+          <div class="w-14 h-14 bg-blue-100 text-pivote-primary rounded-lg flex items-center justify-center text-2xl mb-6">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">1. Consulting: Estrategia y Transformación Interna</h3>
+          <p class="text-gray-600">
+            Asesoría para diseñar la hoja de ruta de crecimiento. Definimos un plan ejecutable y gestionamos cambios organizacionales
+            para habilitar resultados.
+          </p>
+          <ul class="text-sm text-gray-500 mt-4 space-y-1">
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Ideal para empresas que necesitan precisión estratégica.</li>
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Visión experta con foco en ejecución.</li>
+          </ul>
         </div>
-    </section>
 
-    <section id="fortalezas" class="py-16 bg-pivote-dark text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-100">Nuestras Fortalezas Fundacionales</h2>
-            <p class="text-gray-400 text-center mb-10">El éxito de PIVOTE se sustenta en tres pilares estratégicos forjados durante años de trabajo directo en el sector minero del norte de Chile. [cite: 8]</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="p-4">
-                    <i class="fas fa-sitemap text-4xl text-pivote-accent mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Redes de Contacto Estratégicas [cite: 10]</h3>
-                    <p class="text-gray-400">Acceso privilegiado a los actores clave del sector. Nuestra red acelera la penetración comercial en la Gran Minería del norte. [cite: 11]</p>
-                </div>
-                <div class="p-4">
-                    <i class="fas fa-map-marked-alt text-4xl text-pivote-accent mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Conocimiento del Ecosistema Local [cite: 12]</h3>
-                    <p class="text-gray-400">Dominamos las dinámicas operacionales, ciclos de inversión y estructuras de decisión de Codelco, BHP y Antofagasta Minerals. [cite: 13]</p>
-                </div>
-                <div class="p-4">
-                    <i class="fas fa-trophy text-4xl text-pivote-accent mb-4"></i>
-                    <h3 class="text-xl font-semibold mb-2">Éxito Comprobado [cite: 14]</h3>
-                    <p class="text-gray-400">Casos de éxito documentados con empresas como Vizutire y Aguamarina demuestran nuestra capacidad de transformar potencial en sostenibilidad. [cite: 14]</p>
-                </div>
-            </div>
+        <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
+          <div class="w-14 h-14 bg-orange-100 text-pivote-accent rounded-lg flex items-center justify-center text-2xl mb-6">
+            <i class="fas fa-handshake" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">2. Partnership: Capital, Ejecución y Alianza Societaria</h3>
+          <p class="text-gray-600">
+            Modelo de alianza para compartir riesgos y acelerar la expansión. Participamos con gestión comercial y habilitación de recursos,
+            según el caso y el acuerdo.
+          </p>
+          <ul class="text-sm text-gray-500 mt-4 space-y-1">
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Para expansión ambiciosa con compromiso de largo plazo.</li>
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Recursos + ejecución comercial con método.</li>
+          </ul>
         </div>
-    </section>
 
-    <section id="agenda" class="py-20 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">Agende un Diagnóstico sin Rodeos</h2>
-            <p class="mb-8 text-gray-600">Comencemos con una sesión estratégica para evaluar su potencial de crecimiento. Valoramos su tiempo. [cite: 116]</p>
-            
-            <div class="bg-white p-4 rounded-xl shadow-lg inline-block w-full max-w-3xl">
-                <a href="https://calendar.app.google/m6ocBtuef9DMLRDf7" target="_blank" class="block w-full py-4 bg-pivote-primary text-white rounded-lg text-xl font-bold hover:bg-blue-700 transition">
-                    <i class="far fa-calendar-alt mr-2"></i> Abrir Calendario de Disponibilidad
-                </a>
-                <p class="text-sm text-gray-500 mt-2">*Se abrirá en una nueva pestaña segura de Google. </p>
-            </div>
+        <div class="p-8 border border-gray-100 rounded-xl shadow-lg hover:shadow-xl transition bg-gray-50">
+          <div class="w-14 h-14 bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center text-2xl mb-6">
+            <i class="fas fa-bullhorn" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">3. Agency: Representación y Penetración de Mercado</h3>
+          <p class="text-gray-600">
+            Representación comercial en zona norte o a nivel país. Activamos red local y conocimiento de decisión minera para acelerar
+            posicionamiento y ventas.
+          </p>
+          <ul class="text-sm text-gray-500 mt-4 space-y-1">
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Penetración rápida sin estructura propia.</li>
+            <li><i class="fas fa-check-circle text-pivote-accent mr-2" aria-hidden="true"></i>Posicionamiento y pipeline comercial efectivo.</li>
+          </ul>
         </div>
-    </section>
 
-    <section id="contacto" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Formulario de Contacto Estratégico [cite: 131, 132]</h2>
-                <p class="mt-4 text-gray-600">Complete el formulario con precisión para asegurar que su consulta sea atendida en menos de 24 horas hábiles. [cite: 117, 118]</p>
-            </div>
-            
-            <div class="bg-gray-50 rounded-2xl shadow-lg p-2 md:p-8 overflow-hidden">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeSlS6Uslxex2hu2f4abbAN3fu7dOM5G8GcSTrq2HAwuCiWCw/viewform?embedded=true" 
-                        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
-                    Cargando formulario...
-                </iframe>
-                
-                <div class="text-center mt-4 p-4 border-t border-gray-200">
-                    <p class="font-semibold text-gray-700">O contáctenos directamente:</p>
-                    <p class="text-sm text-gray-600 mt-2">Email: <a href="mailto:contacto@serviciospivote.com" class="text-pivote-primary hover:underline">contacto@serviciospivote.com</a> [cite: 121]</p>
-                    <p class="text-sm text-gray-600">Teléfono: +56 991019457 [cite: 122]</p>
-                    <p class="text-sm text-gray-600">Ubicación: Antofagasta, Chile. [cite: 123]</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer class="bg-pivote-dark text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-400">&copy; 2025 PIVOTE. Todos los derechos reservados.</p>
+  <!-- FORTALEZAS -->
+  <section id="fortalezas" class="py-16 bg-pivote-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-100">Nuestras Fortalezas Fundacionales</h2>
+      <p class="text-gray-400 text-center mb-10">
+        El éxito de PIVOTE se sustenta en pilares estratégicos construidos con trabajo directo en el sector minero del norte de Chile.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-4">
+          <i class="fas fa-sitemap text-4xl text-pivote-accent mb-4" aria-hidden="true"></i>
+          <h3 class="text-xl font-semibold mb-2">Redes de Contacto Estratégicas</h3>
+          <p class="text-gray-400">
+            Acceso a actores clave del sector. Nuestra red acelera la penetración comercial y la coordinación efectiva.
+          </p>
         </div>
-    </footer>
+
+        <div class="p-4">
+          <i class="fas fa-map-marked-alt text-4xl text-pivote-accent mb-4" aria-hidden="true"></i>
+          <h3 class="text-xl font-semibold mb-2">Conocimiento del Ecosistema Local</h3>
+          <p class="text-gray-400">
+            Dominio de dinámicas operacionales, ciclos de inversión y estructuras de decisión del mercado minero.
+          </p>
+        </div>
+
+        <div class="p-4">
+          <i class="fas fa-trophy text-4xl text-pivote-accent mb-4" aria-hidden="true"></i>
+          <h3 class="text-xl font-semibold mb-2">Ejecución Orientada a Resultados</h3>
+          <p class="text-gray-400">
+            Menos PowerPoint y más avance: acuerdos, seguimiento y resultados visibles. La minería valora hechos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Agende un Diagnóstico sin Rodeos</h2>
+      <p class="mb-8 text-gray-600">
+        Comencemos con una sesión estratégica para evaluar su potencial de crecimiento. Valoramos su tiempo.
+      </p>
+
+      <div class="bg-white p-4 rounded-xl shadow-lg inline-block w-full max-w-3xl">
+        <a
+          href="https://calendar.app.google/m6ocBtuef9DMLRDf7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full py-4 bg-pivote-primary text-white rounded-lg text-xl font-bold hover:bg-blue-700 transition"
+        >
+          <i class="far fa-calendar-alt mr-2" aria-hidden="true"></i> Abrir Calendario de Disponibilidad
+        </a>
+        <p class="text-sm text-gray-500 mt-2">*Se abrirá en una nueva pestaña segura de Google.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Formulario de Contacto Estratégico</h2>
+        <p class="mt-4 text-gray-600">
+          Complete el formulario con precisión para asegurar respuesta en menos de 24 horas hábiles.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-2 md:p-8 overflow-hidden">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeSlS6Uslxex2hu2f4abbAN3fu7dOM5G8GcSTrq2HAwuCiWCw/viewform?embedded=true"
+          width="100%"
+          height="800"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Formulario de contacto PIVOTE"
+        >
+          Cargando formulario...
+        </iframe>
+
+        <div class="text-center mt-4 p-4 border-t border-gray-200">
+          <p class="font-semibold text-gray-700">O contáctenos directamente:</p>
+          <p class="text-sm text-gray-600 mt-2">
+            Email:
+            <a href="mailto:contacto@serviciospivote.com" class="text-pivote-primary hover:underline">
+              contacto@serviciospivote.com
+            </a>
+          </p>
+          <p class="text-sm text-gray-600">Teléfono: +56 9 9101 9457</p>
+          <p class="text-sm text-gray-600">Ubicación: Antofagasta, Chile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-pivote-dark text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-gray-400">&copy; 2025 PIVOTE. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
