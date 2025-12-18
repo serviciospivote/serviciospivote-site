@@ -1,3 +1,5 @@
+Código 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,8 +45,15 @@
   <style>
     html { scroll-behavior: smooth; }
 
-    /* Evita que el nav tape títulos al hacer click en el menú */
-    section[id] { scroll-margin-top: 5rem; }
+    /* ✅ 1) Altura estable del header (evita que se "coma" el hero) */
+    :root { --header-h: 72px; }
+    @media (max-width: 768px) { :root { --header-h: 64px; } }
+
+    /* ✅ 2) El body se separa SIEMPRE lo que mide el header */
+    body { padding-top: var(--header-h); }
+
+    /* ✅ 3) Al hacer click en el menú, el título no queda tapado */
+    section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 
     .hero-bg {
       background:
@@ -54,33 +63,36 @@
       background-position: center;
     }
 
-    /* Dropdown "Más" sin JS (desktop md) */
+    /* Dropdown "Más" sin JS (desktop) */
     details > summary { list-style: none; cursor: pointer; }
     details > summary::-webkit-details-marker { display: none; }
 
-    /* Accesibilidad: reduce motion */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
   </style>
 </head>
 
-<body class="font-sans text-gray-700 bg-gray-50 pt-16">
+<body class="font-sans text-gray-700 bg-gray-50">
 
   <!-- NAV -->
-  <nav class="bg-white shadow-md fixed w-full z-50" aria-label="Navegación principal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex-shrink-0 flex items-center gap-3">
-          <span class="text-2xl font-bold text-pivote-primary">
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50" style="height:var(--header-h)" aria-label="Navegación principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex justify-between items-center h-full">
+
+        <!-- Marca -->
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="text-2xl font-bold text-pivote-primary whitespace-nowrap">
             <i class="fas fa-layer-group" aria-hidden="true"></i> PIVOTE
           </span>
-          <span class="hidden sm:inline-block text-sm text-gray-500">
+
+          <!-- ✅ Claim separado (no pegado al menú) -->
+          <span class="hidden md:inline-block text-sm text-gray-500 border-l border-gray-200 pl-3 truncate">
             Estrategia y Ejecución para Minería
           </span>
         </div>
 
-        <!-- BOTÓN MENÚ MÓVIL (sm y abajo) -->
+        <!-- BOTÓN MENÚ MÓVIL -->
         <button
           id="mobileMenuBtn"
           class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50"
@@ -93,33 +105,43 @@
           <span class="font-medium">Menú</span>
         </button>
 
-        <!-- Menú “completo” SOLO en pantallas grandes -->
-        <div class="hidden lg:flex items-center space-x-7">
-          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary font-medium">Inicio</a>
-          <a href="#problema" class="text-gray-600 hover:text-pivote-primary font-medium">Problema</a>
-          <a href="#modelo" class="text-gray-600 hover:text-pivote-primary font-medium">Modelo</a>
-          <a href="#confianza" class="text-gray-600 hover:text-pivote-primary font-medium">Confianza</a>
-          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary font-medium">Ejes</a>
-          <a href="#liderazgo" class="text-gray-600 hover:text-pivote-primary font-medium">Liderazgo</a>
-          <a href="#expertise" class="text-gray-600 hover:text-pivote-primary font-medium">Expertise</a>
-          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary font-medium">Método</a>
-          <a href="#medimos" class="text-gray-600 hover:text-pivote-primary font-medium">Medición</a>
-          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary font-medium">Contacto</a>
+        <!-- ✅ Desktop (LG+): menú más liviano + dropdown “Más” para evitar sobrecarga -->
+        <div class="hidden lg:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
+          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
+          <a href="#problema" class="text-gray-600 hover:text-pivote-primary">Problema</a>
+          <a href="#modelo" class="text-gray-600 hover:text-pivote-primary">Modelo</a>
+          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary">Ejes</a>
+          <a href="#liderazgo" class="text-gray-600 hover:text-pivote-primary">Liderazgo</a>
+          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary">Método</a>
+          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary">Contacto</a>
 
-          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md font-medium transition">
+          <!-- Más (para no saturar la barra y evitar que “aplane” el hero) -->
+          <details class="relative">
+            <summary class="text-gray-600 hover:text-pivote-primary inline-flex items-center gap-2">
+              Más <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
+            </summary>
+            <div class="absolute right-0 mt-3 w-60 bg-white border border-gray-100 rounded-xl shadow-lg p-2">
+              <a href="#confianza" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Confianza</a>
+              <a href="#expertise" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Expertise</a>
+              <a href="#medimos" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Medición</a>
+              <a href="#agenda" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Agenda</a>
+            </div>
+          </details>
+
+          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md transition">
             Agendar Diagnóstico
           </a>
         </div>
 
-        <!-- Menú “simple” en pantallas medianas (md) + dropdown "Más" -->
-        <div class="hidden md:flex lg:hidden items-center space-x-6">
-          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary font-medium">Inicio</a>
-          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary font-medium">Ejes</a>
-          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary font-medium">Método</a>
-          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary font-medium">Contacto</a>
+        <!-- ✅ MD: tu menú “simple” + dropdown (se mantiene) -->
+        <div class="hidden md:flex lg:hidden items-center space-x-6 text-sm font-medium">
+          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
+          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary">Ejes</a>
+          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary">Método</a>
+          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary">Contacto</a>
 
           <details class="relative">
-            <summary class="text-gray-600 hover:text-pivote-primary font-medium inline-flex items-center gap-2">
+            <summary class="text-gray-600 hover:text-pivote-primary inline-flex items-center gap-2">
               Más <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
             </summary>
             <div class="absolute right-0 mt-3 w-56 bg-white border border-gray-100 rounded-xl shadow-lg p-2">
@@ -133,10 +155,11 @@
             </div>
           </details>
 
-          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md font-medium transition">
+          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md transition">
             Agendar
           </a>
         </div>
+
       </div>
     </div>
   </nav>
@@ -149,10 +172,8 @@
     aria-modal="true"
     aria-label="Menú móvil"
   >
-    <!-- Fondo oscuro -->
     <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/40"></div>
 
-    <!-- Panel -->
     <div class="absolute top-0 right-0 h-full w-[86%] max-w-sm bg-white shadow-2xl p-5 flex flex-col">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
@@ -193,9 +214,9 @@
   </div>
 
   <!-- HERO -->
-  <section id="inicio" class="hero-bg min-h-[calc(100vh-4rem)] flex items-center justify-center text-center px-4">
+  <section id="inicio" class="hero-bg min-h-[calc(100vh-var(--header-h))] flex items-center justify-center text-center px-4">
     <div class="max-w-5xl py-12">
-      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
         Aceleramos el crecimiento de proveedores y empresas de servicios en la
         <span class="text-pivote-accent">minería del norte de Chile</span>
       </h1>
@@ -726,7 +747,6 @@
       closeBtn.addEventListener('click', closeMenu);
       backdrop.addEventListener('click', closeMenu);
 
-      // Cerrar al hacer click en cualquier link del menú
       modal.addEventListener('click', (e) => {
         const target = e.target;
         if (target && target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
@@ -734,7 +754,6 @@
         }
       });
 
-      // Cerrar con tecla ESC
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeMenu();
       });
