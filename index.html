@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PIVOTE | Estrategia y Ejecución para Servicios Mineros</title>
+  <title>PIVOTE | Estrategia y Ejecución para Minería</title>
 
-  <!-- SEO básico -->
-  <meta name="description" content="Consultoría para empresas de servicios a la minería. Articulamos estrategia, ejecución y control para lograr resultados reales." />
+  <meta name="description" content="PIVOTE acelera el crecimiento de proveedores y empresas de servicios en la minería del norte de Chile. Estrategia, ejecución comercial y alianzas para convertir capacidades técnicas en ventas y expansión real." />
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <script>
     tailwind.config = {
@@ -17,10 +16,9 @@
         extend: {
           colors: {
             pivote: {
-              dark: '#0f172a',
-              primary: '#1d4ed8',
-              muted: '#64748b',
-              bg: '#f8fafc'
+              dark: '#1e293b',
+              primary: '#2563eb',
+              accent: '#f97316',
             }
           }
         }
@@ -30,164 +28,682 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    body { padding-top: 72px; }
-    section[id] { scroll-margin-top: 88px; }
+
+    /* ✅ 1) Altura estable del header (evita que se "coma" el hero) */
+    :root { --header-h: 72px; }
+    @media (max-width: 768px) { :root { --header-h: 64px; } }
+
+    /* ✅ 2) El body se separa SIEMPRE lo que mide el header */
+    body { padding-top: var(--header-h); }
+
+    /* ✅ 3) Al hacer click en el menú, el título no queda tapado */
+    section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 
     .hero-bg {
       background:
-        linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85)),
+        linear-gradient(rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.82)),
         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       background-position: center;
     }
+
+    /* Dropdown "Más" sin JS (desktop) */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 
-<body class="bg-pivote-bg text-gray-700 font-sans">
+<body class="font-sans text-gray-700 bg-gray-50">
 
-<!-- HEADER -->
-<nav class="bg-white border-b fixed top-0 left-0 w-full z-50">
-  <div class="max-w-7xl mx-auto px-6 h-18 flex justify-between items-center">
+  <!-- NAV -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50" style="height:var(--header-h)" aria-label="Navegación principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="flex justify-between items-center h-full">
 
-    <!-- Logo principal -->
-    <a href="#inicio" class="flex items-center gap-3">
-      <img src="assets/pivote-principal-light.svg" alt="PIVOTE" class="h-7 md:h-8" />
-      <span class="hidden md:block text-sm text-pivote-muted border-l pl-3">
-        Estrategia y ejecución para servicios mineros
-      </span>
-    </a>
+        <!-- Marca -->
+        <div class="flex items-center gap-3 min-w-0">
+          <a href="#inicio" class="flex items-center gap-3 min-w-0" aria-label="Ir al inicio">
+            <img src="pivote-principal-dark.svg" alt="PIVOTE" class="h-9 w-auto" />
+            <span class="sr-only">PIVOTE</span>
+          </a>
 
-    <!-- Navegación -->
-    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a href="#enfoque" class="hover:text-pivote-primary">Enfoque</a>
-      <a href="#ejes" class="hover:text-pivote-primary">Ejes</a>
-      <a href="#liderazgo" class="hover:text-pivote-primary">Liderazgo</a>
-      <a href="#contacto" class="hover:text-pivote-primary">Contacto</a>
-      <a href="#agenda" class="bg-pivote-primary text-white px-4 py-2 rounded hover:bg-blue-800">
-        Agendar conversación
-      </a>
+          <!-- ✅ Claim separado (no pegado al menú) -->
+          <span class="hidden md:inline-block text-sm text-gray-500 border-l border-gray-200 pl-3 truncate">
+            Estrategia y Ejecución para Minería
+          </span>
+        </div>
+
+        <!-- BOTÓN MENÚ MÓVIL -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50"
+          aria-label="Abrir menú"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          type="button"
+        >
+          <i class="fas fa-bars" aria-hidden="true"></i>
+          <span class="font-medium">Menú</span>
+        </button>
+
+        <!-- ✅ Desktop (LG+): menú más liviano + dropdown “Más” para evitar sobrecarga -->
+        <div class="hidden lg:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
+          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
+          <a href="#problema" class="text-gray-600 hover:text-pivote-primary">Problema</a>
+          <a href="#modelo" class="text-gray-600 hover:text-pivote-primary">Modelo</a>
+          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary">Ejes</a>
+          <a href="#liderazgo" class="text-gray-600 hover:text-pivote-primary">Liderazgo</a>
+          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary">Método</a>
+          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary">Contacto</a>
+
+          <!-- Más (para no saturar la barra y evitar que “aplane” el hero) -->
+          <details class="relative">
+            <summary class="text-gray-600 hover:text-pivote-primary inline-flex items-center gap-2">
+              Más <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
+            </summary>
+            <div class="absolute right-0 mt-3 w-56 bg-white border border-gray-100 rounded-xl shadow-lg p-2">
+              <a href="#problema" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Problema</a>
+              <a href="#modelo" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Modelo</a>
+              <a href="#confianza" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Confianza</a>
+              <a href="#liderazgo" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Liderazgo</a>
+              <a href="#expertise" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Expertise</a>
+              <a href="#medimos" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Medición</a>
+              <a href="#agenda" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Agenda</a>
+            </div>
+          </details>
+
+          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md transition">
+            Agendar
+          </a>
+        </div>
+
+        <!-- ✅ MD: tu menú “simple” + dropdown (se mantiene) -->
+        <div class="hidden md:flex lg:hidden items-center space-x-6 text-sm font-medium">
+          <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
+          <a href="#servicios" class="text-gray-600 hover:text-pivote-primary">Ejes</a>
+          <a href="#metodo" class="text-gray-600 hover:text-pivote-primary">Método</a>
+          <a href="#contacto" class="text-gray-600 hover:text-pivote-primary">Contacto</a>
+
+          <details class="relative">
+            <summary class="text-gray-600 hover:text-pivote-primary inline-flex items-center gap-2">
+              Más <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
+            </summary>
+            <div class="absolute right-0 mt-3 w-56 bg-white border border-gray-100 rounded-xl shadow-lg p-2">
+              <a href="#problema" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Problema</a>
+              <a href="#modelo" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Modelo</a>
+              <a href="#confianza" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Confianza</a>
+              <a href="#liderazgo" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Liderazgo</a>
+              <a href="#expertise" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Expertise</a>
+              <a href="#medimos" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Medición</a>
+              <a href="#agenda" class="block px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-700">Agenda</a>
+            </div>
+          </details>
+
+          <a href="#agenda" class="text-white bg-pivote-accent hover:bg-orange-600 px-4 py-2 rounded-md transition">
+            Agendar
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- MENÚ MÓVIL (OVERLAY) -->
+  <div
+    id="mobileMenu"
+    class="md:hidden fixed inset-0 z-[60] hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú móvil"
+  >
+    <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/40"></div>
+
+    <div class="absolute top-0 right-0 h-full w-[86%] max-w-sm bg-white shadow-2xl p-5 flex flex-col">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <a href="#inicio" class="flex items-center gap-2" aria-label="Ir al inicio">
+            <img src="pivote-principal-dark.svg" alt="PIVOTE" class="h-8 w-auto" />
+            <span class="sr-only">PIVOTE</span>
+          </a>
+        </div>
+        <button id="mobileMenuClose" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Cerrar menú" type="button">
+          <i class="fas fa-xmark text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <p class="mt-2 text-sm text-gray-500">Estrategia y Ejecución para Minería</p>
+
+      <div class="mt-6 flex flex-col gap-2">
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#inicio">Inicio</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#problema">Problema</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#modelo">Modelo</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#confianza">Confianza</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#servicios">Ejes</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#liderazgo">Liderazgo</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#expertise">Expertise</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#metodo">Método</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#medimos">Medición</a>
+        <a class="px-3 py-2 rounded-lg hover:bg-gray-50 text-gray-800 font-medium" href="#contacto">Contacto</a>
+      </div>
+
+      <div class="mt-6">
+        <a href="#agenda" class="block text-center bg-pivote-accent text-white px-4 py-3 rounded-lg font-bold hover:bg-orange-600 transition">
+          Agendar Diagnóstico
+        </a>
+      </div>
+
+      <div class="mt-auto pt-6 border-t border-gray-100 text-xs text-gray-500">
+        <p>Antofagasta, Chile · contacto@serviciospivote.com</p>
+      </div>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-center px-6">
-  <div class="max-w-5xl text-white">
+  <!-- HERO -->
+  <section id="inicio" class="hero-bg min-h-[calc(100vh-var(--header-h))] flex items-center justify-center text-center px-4">
+    <div class="max-w-5xl py-12">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        Aceleramos el crecimiento de proveedores y empresas de servicios en la
+        <span class="text-pivote-accent">minería del norte de Chile</span>
+      </h1>
 
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-      Estrategia y ejecución para empresas de servicios mineros
-      <span class="block text-blue-200 mt-3 text-2xl md:text-3xl">
-        que necesitan resultados reales
-      </span>
-    </h1>
-
-    <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8">
-      Articulamos estrategia, ejecución y control para ordenar la operación,
-      priorizar correctamente y avanzar con disciplina.
-    </p>
-
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href="#agenda" class="bg-pivote-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-800">
-        Agendar una conversación
-      </a>
-      <a href="#ejes" class="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-pivote-dark">
-        Ver ejes de trabajo
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ENFOQUE -->
-<section id="enfoque" class="py-20 bg-white">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Enfoque de trabajo</h2>
-    <p class="text-lg text-gray-600 mt-6">
-      Menos relato y más decisiones ejecutables.
-      Priorización realista, control y seguimiento como estándar.
-    </p>
-  </div>
-</section>
-
-<!-- EJES -->
-<section id="ejes" class="py-20 bg-pivote-bg">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold mb-4">Ejes de articulación</h2>
-      <p class="text-gray-600">
-        Tres líneas que se activan según necesidad, todas orientadas a ejecución real.
+      <p class="text-xl text-gray-200 mb-6 max-w-3xl mx-auto">
+        Estrategia, ejecución comercial y alianzas para transformar capacidades técnicas en ventas, contratos y expansión real.
       </p>
+
+      <p class="text-base md:text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+        No hacemos presentaciones bonitas. Ayudamos a ejecutar.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contacto" class="bg-pivote-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg">
+          Comenzar Diagnóstico
+        </a>
+        <a href="#servicios" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-pivote-dark transition">
+          Ver Ejes Estratégicos
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div class="bg-white/10 border border-white/10 rounded-xl p-4 text-left">
+          <p class="text-white font-semibold mb-1">Foco B2B Minero</p>
+          <p class="text-gray-200 text-sm">Proveedores, servicios y tecnología con ambición de crecer sin improvisar.</p>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-xl p-4 text-left">
+          <p class="text-white font-semibold mb-1">Ejecución real</p>
+          <p class="text-gray-200 text-sm">Orden, priorización y avance. Menos teoría, más resultados visibles.</p>
+        </div>
+        <div class="bg-white/10 border border-white/10 rounded-xl p-4 text-left">
+          <p class="text-white font-semibold mb-1">Territorio</p>
+          <p class="text-gray-200 text-sm">Conocimiento del norte de Chile y dinámica comercial del ecosistema minero.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-8 rounded-xl border">
-        <h3 class="text-xl font-bold mb-2">Consulting</h3>
-        <p>Claridad estratégica y hoja de ruta ejecutable.</p>
-      </div>
+  <!-- PROBLEMA -->
+  <section id="problema" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">El problema que resolvemos</h2>
+        <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
 
-      <div class="bg-white p-8 rounded-xl border">
-        <h3 class="text-xl font-bold mb-2">Partnership</h3>
-        <p>Alianza de ejecución con foco en resultados compartidos.</p>
-      </div>
+        <p class="mt-6 text-lg text-gray-700">
+          Muchas empresas proveedoras cuentan con capacidad técnica, equipos comprometidos y buenas soluciones, pero no logran escalar en el ecosistema minero.
+        </p>
 
-      <div class="bg-white p-8 rounded-xl border">
-        <h3 class="text-xl font-bold mb-2">Agency</h3>
-        <p>Representación y articulación comercial con control.</p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
+            <p class="font-semibold text-gray-900 mb-2"><i class="fas fa-triangle-exclamation text-pivote-accent mr-2" aria-hidden="true"></i>Dolores típicos</p>
+            <ul class="text-gray-600 space-y-2">
+              <li>• Dificultad para acceder a decisores y ciclos de decisión largos.</li>
+              <li>• Dependencia de pocos contratos y baja diversificación.</li>
+              <li>• Falta de foco comercial específico para minería.</li>
+              <li>• Crecimiento que consume caja sin consolidarse.</li>
+              <li>• Desconexión entre operación, estrategia y ventas.</li>
+            </ul>
+          </div>
+
+          <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
+            <p class="font-semibold text-gray-900 mb-2"><i class="fas fa-bullseye text-pivote-primary mr-2" aria-hidden="true"></i>Qué hace PIVOTE</p>
+            <p class="text-gray-600">
+              PIVOTE ordena la estrategia, define un modelo de crecimiento y acompaña la ejecución comercial con foco en minería.
+              No vendemos “ideas”: instalamos criterio, disciplina y avance real.
+            </p>
+            <p class="mt-3 text-gray-600">
+              Operamos combinando estrategia, ejecución comercial y alianzas de largo plazo, adaptando el modelo según la madurez, ambición y contexto de cada empresa.
+              No aceleramos por acelerar: aceleramos lo que tiene sentido.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- LIDERAZGO -->
-<section id="liderazgo" class="py-20 bg-pivote-dark text-white">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">Liderazgo</h2>
-    <p class="text-gray-200">
-      PIVOTE es liderado por Enrique Olivares Godoy,
-      con experiencia real en operación, transformación y ejecución en el ecosistema minero.
-    </p>
-  </div>
-</section>
+  <!-- MODELO -->
+  <section id="modelo" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
 
-<!-- AGENDA -->
-<section id="agenda" class="py-20 bg-white text-center">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-4">Agendar una conversación</h2>
-    <p class="text-gray-600 mb-6">
-      20–30 minutos. Sin venta forzada. Con próximos pasos claros.
-    </p>
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Qué es PIVOTE</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+          <p class="mt-6 text-lg text-gray-700">
+            <strong>PIVOTE es una plataforma de crecimiento y ejecución</strong>, diseñada para empresas que buscan entrar o escalar en la minería del norte de Chile con criterio, realismo y foco en resultados.
+          </p>
+          <p class="mt-3 text-gray-600">
+            Operamos combinando estrategia, ejecución comercial y alianzas de largo plazo, adaptando el modelo según la madurez, ambición y contexto de cada empresa.
+            No aceleramos por acelerar: aceleramos lo que tiene sentido.
+          </p>
+        </div>
 
-    <a href="https://calendar.app.google/m6ocBtuef9DMLRDf7"
-       target="_blank"
-       class="inline-block bg-pivote-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-800">
-      Abrir calendario
-    </a>
-  </div>
-</section>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+            <div class="text-2xl text-pivote-primary mb-3"><i class="fas fa-compass" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">Criterio</p>
+            <p class="text-gray-600">Priorización, foco y claridad para no desperdiciar esfuerzo ni caja.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+            <div class="text-2xl text-pivote-accent mb-3"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">Ejecución</p>
+            <p class="text-gray-600">Acompañamiento práctico: avance visible y disciplina comercial.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+            <div class="text-2xl text-gray-700 mb-3"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">Articulación</p>
+            <p class="text-gray-600">Conexión efectiva con el ecosistema, sin promesas vacías.</p>
+          </div>
+        </div>
 
-<!-- CONTACTO -->
-<section id="contacto" class="py-20 bg-pivote-bg">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Contacto</h2>
-    <p class="text-gray-600 mb-6">
-      Si enfrentas un desafío concreto y necesitas ordenar y ejecutar mejor, conversemos.
-    </p>
+      </div>
+    </div>
+  </section>
 
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSeSlS6Uslxex2hu2f4abbAN3fu7dOM5G8GcSTrq2HAwuCiWCw/viewform?embedded=true"
-      width="100%"
-      height="780"
-      frameborder="0">
-    </iframe>
-  </div>
-</section>
+  <!-- CONFIANZA -->
+  <section id="confianza" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
 
-<!-- FOOTER -->
-<footer class="bg-pivote-dark text-white py-8 text-center">
-  <img src="assets/pivote-principal-dark.svg" class="h-7 mx-auto mb-3" alt="PIVOTE" />
-  <p class="text-gray-400 text-sm">
-    Estrategia · Ejecución · Control
-  </p>
-</footer>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Señales de confianza</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+          <p class="mt-4 text-lg text-gray-600">
+            Experiencia aplicada en el ecosistema minero, sin promesas que no resistan la operación.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <p class="text-gray-700 leading-relaxed">
+              PIVOTE se construye sobre experiencia real en el ecosistema minero del norte de Chile,
+              trabajando con empresas proveedoras y equipos que enfrentan desafíos concretos de crecimiento,
+              ejecución y posicionamiento.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">
+              No operamos desde supuestos ni modelos teóricos desconectados del terreno.
+              Nuestro foco está en ordenar, priorizar y ejecutar con criterio.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <ul class="space-y-4 text-gray-700">
+              <li>✔ Experiencia en <strong>operación, contratos y dinámica comercial minera</strong>.</li>
+              <li>✔ Participación directa en <strong>procesos de crecimiento y ejecución comercial</strong>.</li>
+              <li>✔ Conocimiento práctico de <strong>mandantes, ciclos de decisión y exigencias operacionales</strong>.</li>
+              <li>✔ Enfoque en <strong>resultados realistas</strong>, evitando promesas que no resisten el contexto minero.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="italic text-gray-600">
+            No trabajamos desde el supuesto. Trabajamos desde la experiencia aplicada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJES -->
+  <section id="servicios" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Ejes estratégicos</h2>
+        <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+        <p class="mt-4 text-lg text-gray-600">
+          Tres formas de trabajo, con un solo objetivo: crecimiento real y ejecutable.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+          <div class="text-3xl text-pivote-primary mb-4"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Consulting</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Diagnóstico, foco y definición estratégica. Ordenamos el “qué” y el “por dónde”, sin humo ni teoría estéril.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+          <div class="text-3xl text-pivote-accent mb-4"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Partnership</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Acompañamiento y ejecución conjunta. Entramos al “cómo” y “con quién”, articulando y empujando decisiones.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+          <div class="text-3xl text-gray-700 mb-4"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Agency</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Material comercial, presencia y activación. Ejecutamos piezas y acciones concretas para lograr movimiento real.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIDERAZGO -->
+  <section id="liderazgo" class="py-20 bg-pivote-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-100">Quién lidera PIVOTE</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 lg:col-span-2">
+            <p class="text-gray-200 leading-relaxed">
+              <strong>PIVOTE es liderado por Enrique Olivares Godoy</strong>, profesional con <strong>más de 25 años de experiencia</strong> en operaciones,
+              transformación organizacional y desarrollo de negocios en el <strong>ecosistema minero del norte de Chile</strong>.
+            </p>
+            <p class="text-gray-200 leading-relaxed mt-4">
+              Su trayectoria se ha construido trabajando directamente con empresas proveedoras, contratos de servicios y equipos operativos,
+              combinando experiencia en terreno con roles de definición estratégica, gestión y crecimiento empresarial.
+            </p>
+            <p class="text-gray-200 leading-relaxed mt-4">
+              Cuenta además con <strong>formación de postgrado en gestión y estrategia</strong>, lo que complementa su experiencia práctica en la toma de decisiones
+              y el diseño de modelos de crecimiento.
+            </p>
+
+            <div class="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
+              <p class="text-gray-200 italic">“En minería, la experiencia no se declara: se demuestra en decisiones bien tomadas.”</p>
+            </div>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+            <img
+              src="IA%20Imagen%20CV_1.png"
+              alt="Enrique Olivares Godoy - Líder de PIVOTE"
+              class="w-44 h-44 mx-auto rounded-full object-cover border border-white/10 shadow-lg"
+              loading="lazy"
+            />
+
+            <p class="text-gray-100 font-semibold mt-5 mb-3">Por qué esto importa</p>
+            <ul class="text-gray-200 space-y-2 text-sm text-left">
+              <li><i class="fas fa-check text-pivote-accent mr-2" aria-hidden="true"></i>Entendimiento real del contexto minero.</li>
+              <li><i class="fas fa-check text-pivote-accent mr-2" aria-hidden="true"></i>Priorización con foco en impacto.</li>
+              <li><i class="fas fa-check text-pivote-accent mr-2" aria-hidden="true"></i>Menos teoría, más avance visible.</li>
+              <li><i class="fas fa-check text-pivote-accent mr-2" aria-hidden="true"></i>Responsabilidad sobre lo propuesto.</li>
+            </ul>
+
+            <div class="mt-6">
+              <a href="#agenda" class="block text-center bg-pivote-accent text-white px-5 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+                Agendar Diagnóstico
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Expertise aplicada</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+          <p class="mt-4 text-lg text-gray-600">
+            Experiencia en operación y gestión, con foco en decisiones ejecutables y crecimiento sostenible.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <h3 class="font-semibold text-gray-900 mb-3">Cómo aporta PIVOTE</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Ordena la estrategia sin perder el contexto operacional.</li>
+              <li>• Traduce capacidades técnicas en propuesta de valor comprable.</li>
+              <li>• Acompaña la ejecución comercial con disciplina y seguimiento.</li>
+              <li>• Reduce el riesgo de “crecer desordenado” y quemar caja.</li>
+            </ul>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <h3 class="font-semibold text-gray-900 mb-3">Enfoque profesional</h3>
+            <div class="space-y-4 text-gray-700">
+              <p>
+                Gestión y desarrollo de negocios con base en operación, contratos y dinámica del ecosistema minero.
+              </p>
+              <p>
+                Formación de <strong>postgrado en gestión y estrategia</strong>, complementando experiencia práctica en terreno.
+              </p>
+              <p class="italic text-gray-600">
+                “La credibilidad no está en lo que se promete, sino en lo que se ejecuta y se mide.”
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cómo trabajamos</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+          <p class="mt-4 text-lg text-gray-600">Un proceso simple, práctico y orientado a resultados.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <div class="text-2xl text-pivote-primary mb-3"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">1. Diagnóstico sin rodeos</p>
+            <p class="text-gray-600 text-sm">Entendemos negocio, mercado y ambición real.</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <div class="text-2xl text-pivote-accent mb-3"><i class="fas fa-diagram-project" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">2. Definición del modelo</p>
+            <p class="text-gray-600 text-sm">Consulting, Partnership o Agency (o combinación).</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <div class="text-2xl text-gray-700 mb-3"><i class="fas fa-person-running" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">3. Ejecución y acompañamiento</p>
+            <p class="text-gray-600 text-sm">No soltamos el proceso en la PPT.</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <div class="text-2xl text-pivote-primary mb-3"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <p class="font-semibold text-gray-900 mb-2">4. Resultados y continuidad</p>
+            <p class="text-gray-600 text-sm">Ventas, posicionamiento o decisiones claras.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="#contacto" class="inline-block bg-pivote-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow">
+            Iniciar contacto
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDICIÓN -->
+  <section id="medimos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cómo medimos el avance</h2>
+          <div class="w-24 h-1 bg-pivote-accent mx-auto"></div>
+          <p class="mt-4 text-lg text-gray-600">Medimos progreso real y decisiones habilitadas.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <div class="text-2xl text-pivote-primary mb-4"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Pipeline comercial</h3>
+            <p class="text-gray-600 text-sm">Oportunidades reales en curso, no solo contactos iniciales.</p>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <div class="text-2xl text-pivote-accent mb-4"><i class="fas fa-people-arrows" aria-hidden="true"></i></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Decisores y feedback</h3>
+            <p class="text-gray-600 text-sm">Reuniones relevantes, feedback recibido y posicionamiento.</p>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-100 rounded-xl p-8 shadow-sm">
+            <div class="text-2xl text-gray-700 mb-4"><i class="fas fa-list-check" aria-hidden="true"></i></div>
+            <h3 class="font-semibold text-gray-900 mb-2">Avance ejecutado</h3>
+            <p class="text-gray-600 text-sm">Acciones cerradas: definiciones, material y siguientes pasos claros.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="italic text-gray-600">
+            En minería, avanzar sin medir es solo moverse. Nosotros medimos para decidir mejor.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Agende un diagnóstico</h2>
+      <p class="mb-3 text-gray-600">
+        Una sesión breve, directa y útil para definir si PIVOTE es el camino correcto para su crecimiento.
+      </p>
+      <p class="mb-8 text-sm text-gray-500">
+        20–30 minutos · Sin venta forzada · Con próximos pasos claros
+      </p>
+
+      <div class="bg-gray-50 p-4 rounded-xl shadow-lg inline-block w-full max-w-3xl border border-gray-100">
+        <a
+          href="https://calendar.app.google/m6ocBtuef9DMLRDf7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full py-4 bg-pivote-primary text-white rounded-lg text-xl font-bold hover:bg-blue-700 transition"
+        >
+          <i class="far fa-calendar-alt mr-2" aria-hidden="true"></i> Abrir Calendario de Disponibilidad
+        </a>
+
+        <p class="mt-4 text-sm text-gray-600">
+          ¿Prefiere partir por escrito?
+          <a href="#contacto" class="text-pivote-primary hover:underline font-medium">Use el formulario y respondemos en 24 horas hábiles</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Formulario de contacto</h2>
+        <p class="mt-4 text-gray-600">Complete el formulario con precisión para asegurar respuesta en menos de 24 horas hábiles.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-2 md:p-8 overflow-hidden border border-gray-100">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeSlS6Uslxex2hu2f4abbAN3fu7dOM5G8GcSTrq2HAwuCiWCw/viewform?embedded=true"
+          width="100%"
+          height="820"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Formulario de contacto PIVOTE"
+        >
+          Cargando formulario...
+        </iframe>
+
+        <div class="text-center mt-4 p-4 border-t border-gray-200">
+          <p class="font-semibold text-gray-700">O contáctenos directamente:</p>
+          <p class="text-sm text-gray-600 mt-2">
+            Email: <a href="mailto:contacto@serviciospivote.com" class="text-pivote-primary hover:underline">contacto@serviciospivote.com</a>
+          </p>
+          <p class="text-sm text-gray-600">
+            Teléfono: <a href="tel:+56991019457" class="text-pivote-primary hover:underline">+56 9 9101 9457</a>
+          </p>
+          <p class="text-sm text-gray-600">Ubicación: Antofagasta, Chile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-pivote-dark text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-gray-400">&copy; 2025 PIVOTE. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JS MENÚ MÓVIL -->
+  <script>
+    (function () {
+      const btn = document.getElementById('mobileMenuBtn');
+      const modal = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('mobileMenuClose');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+
+      if (!btn || !modal || !closeBtn || !backdrop) return;
+
+      function openMenu() {
+        modal.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        modal.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      backdrop.addEventListener('click', closeMenu);
+
+      modal.addEventListener('click', (e) => {
+        const target = e.target;
+        if (target && target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeMenu();
+      });
+    })();
+  </script>
 
 </body>
 </html>
