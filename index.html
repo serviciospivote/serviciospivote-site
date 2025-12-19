@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PIVOTE | Estrategia y Ejecución para Minería</title>
 
+  <!-- SEO -->
   <meta name="description" content="PIVOTE acelera el crecimiento de proveedores y empresas de servicios en la minería del norte de Chile. Estrategia, ejecución comercial y alianzas para convertir capacidades técnicas en ventas y expansión real." />
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -29,14 +31,11 @@
   <style>
     html { scroll-behavior: smooth; }
 
-    /* ✅ 1) Altura estable del header (evita que se "coma" el hero) */
+    /* Header estable */
     :root { --header-h: 72px; }
     @media (max-width: 768px) { :root { --header-h: 64px; } }
 
-    /* ✅ 2) El body se separa SIEMPRE lo que mide el header */
     body { padding-top: var(--header-h); }
-
-    /* ✅ 3) Al hacer click en el menú, el título no queda tapado */
     section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 
     .hero-bg {
@@ -47,7 +46,7 @@
       background-position: center;
     }
 
-    /* Dropdown "Más" sin JS (desktop) */
+    /* Dropdown “Más” sin JS */
     details > summary { list-style: none; cursor: pointer; }
     details > summary::-webkit-details-marker { display: none; }
 
@@ -67,11 +66,11 @@
         <!-- Marca -->
         <div class="flex items-center gap-3 min-w-0">
           <a href="#inicio" class="flex items-center gap-3 min-w-0" aria-label="Ir al inicio">
-            <img src="pivote-principal-dark.svg" alt="PIVOTE" class="h-9 w-auto" />
+            <!-- ✅ Ruta corregida a /assets -->
+            <img src="assets/pivote-principal-dark.svg" alt="PIVOTE" class="h-9 w-auto" />
             <span class="sr-only">PIVOTE</span>
           </a>
 
-          <!-- ✅ Claim separado (no pegado al menú) -->
           <span class="hidden md:inline-block text-sm text-gray-500 border-l border-gray-200 pl-3 truncate">
             Estrategia y Ejecución para Minería
           </span>
@@ -90,7 +89,7 @@
           <span class="font-medium">Menú</span>
         </button>
 
-        <!-- ✅ Desktop (LG+): menú más liviano + dropdown “Más” para evitar sobrecarga -->
+        <!-- Desktop (LG+) -->
         <div class="hidden lg:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
           <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
           <a href="#problema" class="text-gray-600 hover:text-pivote-primary">Problema</a>
@@ -100,7 +99,6 @@
           <a href="#metodo" class="text-gray-600 hover:text-pivote-primary">Método</a>
           <a href="#contacto" class="text-gray-600 hover:text-pivote-primary">Contacto</a>
 
-          <!-- Más (para no saturar la barra y evitar que “aplane” el hero) -->
           <details class="relative">
             <summary class="text-gray-600 hover:text-pivote-primary inline-flex items-center gap-2">
               Más <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
@@ -121,7 +119,7 @@
           </a>
         </div>
 
-        <!-- ✅ MD: tu menú “simple” + dropdown (se mantiene) -->
+        <!-- MD -->
         <div class="hidden md:flex lg:hidden items-center space-x-6 text-sm font-medium">
           <a href="#inicio" class="text-gray-600 hover:text-pivote-primary">Inicio</a>
           <a href="#servicios" class="text-gray-600 hover:text-pivote-primary">Ejes</a>
@@ -153,20 +151,15 @@
   </nav>
 
   <!-- MENÚ MÓVIL (OVERLAY) -->
-  <div
-    id="mobileMenu"
-    class="md:hidden fixed inset-0 z-[60] hidden"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Menú móvil"
-  >
+  <div id="mobileMenu" class="md:hidden fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-label="Menú móvil">
     <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/40"></div>
 
     <div class="absolute top-0 right-0 h-full w-[86%] max-w-sm bg-white shadow-2xl p-5 flex flex-col">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <a href="#inicio" class="flex items-center gap-2" aria-label="Ir al inicio">
-            <img src="pivote-principal-dark.svg" alt="PIVOTE" class="h-8 w-auto" />
+            <!-- ✅ Ruta corregida a /assets -->
+            <img src="assets/pivote-principal-dark.svg" alt="PIVOTE" class="h-8 w-auto" />
             <span class="sr-only">PIVOTE</span>
           </a>
         </div>
@@ -660,9 +653,14 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-pivote-dark text-white py-8">
+  <footer class="bg-pivote-dark text-white py-10">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-gray-400">&copy; 2025 PIVOTE. Todos los derechos reservados.</p>
+      <!-- ✅ Logo en footer (fondo oscuro => variante light) -->
+      <div class="flex justify-center mb-4">
+        <img src="assets/pivote-principal-light.svg" alt="PIVOTE" class="h-7 w-auto opacity-95" />
+      </div>
+      <p class="text-gray-300 text-sm">Estrategia · Ejecución · Control</p>
+      <p class="text-gray-400 mt-3 text-sm">&copy; 2025 PIVOTE. Todos los derechos reservados.</p>
     </div>
   </footer>
 
